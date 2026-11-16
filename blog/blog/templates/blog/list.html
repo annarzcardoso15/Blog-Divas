@@ -1,10 +1,13 @@
 {% extends 'blog/base.html' %}
-
 {% block content %}
-  <h1>Blog das Divas</h1>
-  <br>
-  <h1>Últimas Postagens</h1>
-  
+<h1>Blog das Divas</h1>
+<br>
+  {% if categoria_atual %}
+    <h1>Posts da Categoria: {{ categoria_atual.nome }}</h1>
+  {% else %}
+    <h1>Últimas Postagens</h1>
+  {% endif %}
+    
 
   <div class="lista-albuns"> 
     

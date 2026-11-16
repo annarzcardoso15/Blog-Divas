@@ -1,39 +1,46 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-  <article class="body">
-    
+<article class="body">
+
     <h1>{{ post.titulo }}</h1>
+    <p>Categorias:
+        {% for cat in post.categorias.all %}
+        <a href="{% url 'category_detail' cat.pk %}">{{ cat.nome }}</a>{% if not forloop.last %}, {% endif %}
+        {% empty %}
+        Sem categoria
+        {% endfor %}
+    </p>
     <p>Publicado em: {{ post.data_post|date:"d/m/Y" }}</p>
-    
+
     <div class="caixa-letra">
         <!-- filtro safe -->
         {{ post.conteudo|safe }}
     </div>
-    
+
     <br>
     <div class="botoes">
-        <a href="{% url 'post_update' post.id %}">Editar Post</a> | 
+        <a href="{% url 'post_update' post.id %}">Editar Post</a> |
         <a href="{% url 'post_delete' post.id %}">Deletar Post</a>
     </div>
     <br>
     <a href="{% url 'post_list' %}">← Voltar para todos os posts</a>
 
-  </article>
+</article>
 
-  <hr>
-    <h2>Comentários</h2>
-    
-    <a href="{% url 'comment_create' post.pk %}">Adicionar Comentário</a>
-    <br><br>
+<hr>
+<h2>Comentários</h2>
 
-    {% for comment in post.comments.all %}
-        <div class="caixa-letra">
-            <strong>{{ comment.autor.username }}</strong> 
-            <small>em {{ comment.data_postagem|date:"d/m/Y H:i" }}</small>
-            <p>{{ comment.texto }}</p>
-        </div>
-    {% empty %}
-        <p>Ainda não há comentários.</p>
-    {% endfor %}
+<a href="{% url 'comment_create' post.pk %}">Adicionar Comentário</a>
+<br><br>
+
+{% for comment in post.comments.all %}
+<div class="caixa-letra">
+    <strong>{{ comment.autor.username }}</strong>
+    <small>em {{ comment.data_postagem|date:"d/m/Y H:i" }}</small>
+    <p>{{ comment.texto }}</p>
+</div>
+{% empty %}
+<p>Ainda não há comentários.</p>
+{% endfor %}
 {% endblock %}
