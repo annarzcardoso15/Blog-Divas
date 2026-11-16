@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <article class="body">
+    <h1>Novo Comentário</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Postar Comentário</button>
+    </form>
+    <br>
+    <a href="{% url 'post_detail' view.kwargs.pk %}">Cancelar</a>
+  </article>
+{% endblock %}

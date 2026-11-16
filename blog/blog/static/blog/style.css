@@ -108,7 +108,7 @@ footer p {
 }
 
 .card-album {
-    background: white;
+    background: rgb(142, 173, 143);
     padding: 20px;
     border-radius: 8px;
     flex: 1;
@@ -129,7 +129,7 @@ footer p {
 
 
 .caixa-letra {
-    background-color: #f9f9f9;
+    background-color: #68796c;
     text-align: center;
     padding: 15px 20px;
     margin: 20px 0;

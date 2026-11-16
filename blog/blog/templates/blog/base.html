@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-width=1.0">
-    <title>titulo</title>
+    <title>Blog das Divas</title>
     
     <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
     <header>
         <nav>
+            
             <ul>
                 <li><a href="{% url 'post_list' %}">Home / Posts</a></li>
                 <li><a href="{% url 'post_create' %}">Novo Post</a></li>
