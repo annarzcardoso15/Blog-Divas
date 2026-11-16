@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <article class="body">
+    
+    <h1>{{ post.titulo }}</h1>
+    <p>Publicado em: {{ post.data_post|date:"d/m/Y" }}</p>
+    
+    <div class="conteudo">
+        <!-- filtro safe -->
+        {{ post.conteudo|safe }}
+    </div>
+    
+    <br>
+    <div class="botoes">
+        <a href="{% url 'post_update' post.id %}">Editar Post</a> | 
+        <a href="{% url 'post_delete' post.id %}">Deletar Post</a>
+    </div>
+    <br>
+    <a href="{% url 'post_list' %}">← Voltar para todos os posts</a>
+
+  </article>
+{% endblock %}

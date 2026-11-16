@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <h1>Tem certeza que deseja deletar "{{ post.titulo }}"?</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Sim, deletar</button>
+    <a href="{% url 'post_detail' post.pk %}">Cancelar</a>
+  </form>
+{% endblock %}
